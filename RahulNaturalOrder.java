@@ -40,7 +40,7 @@ class OrderComparator
                 curIndex1++;
             }
 
-            System.out.println(result1);
+            //System.out.println(result1);
 
 
             c2 = s2.charAt(curIndex2);
@@ -57,7 +57,7 @@ class OrderComparator
                 curIndex2++;
             }
 
-            System.out.println(result2);
+            //System.out.println(result2);
 
             if(result1 < result2)
                 return -1;
@@ -75,7 +75,39 @@ class RahulNaturalOrder
     public static void main (String args[])
     {
         OrderComparator obj = new OrderComparator();
-        System.out.println(obj.compare("test10","test2"));
+
+        //To verify correctness use assert for unit testing.
+        //if first string is greater assert check for 1, else for -1.if both string are equal check for assert equal to 1.
+
+        int check;
+        check = obj.compare("test10","test2");
+        assert check == 1: "Assertion 1 failed";
+
+
+        check = obj.compare("1/2/10","1/2/20");
+        assert check == -1: "Assertion 2 failed";
+
+
+        check = obj.compare("-1/2/10","-1/2/10");
+        assert check == 0: "Assertion 3 failed";
+
+
+        check = obj.compare("5.100.1","5.1000.1");
+        assert check == -1: "Assertion 4 failed"; 
+
+
+        check = obj.compare("eee 3 ddd jpeg2000 eeee","eee 12 ddd jpeg2000 eee");
+        assert check == 1: "Assertion 5 failed";
+
+
+        check = obj.compare("x2-y08","x10");
+        assert check == -1: "Assertion 6 failed";
+
+
+        check = obj.compare("U1.01.02","U1.01.02");
+        assert check == 0: "Assertion 7 failed";
+
+        //Till here all assertionn are working correctly, so i think the logic is correct.
     }
 }
 
